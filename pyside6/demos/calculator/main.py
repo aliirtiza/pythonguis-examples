@@ -42,7 +42,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.show()
 
     def display(self):
-        self.lcdNumber.display(self.stack[-1])
+        try:                 
+         self.lcdNumber.display(self.stack[-1])
+        except OverflowError:
+            self.lcdNumber.display('Error') 
 
     def reset(self):
         self.state = READY
